@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class FilePlane extends IFilesManager{
-
 	@Override
 	public String readFile() {
 		String read="";
@@ -22,9 +21,8 @@ public class FilePlane extends IFilesManager{
 		
 	}
 	@Override
-	public void writeFile() {
+	public void writeFile(String text,int number) {
 		
 		System.out.println("poner algo");
-	}
-	
+	}	
 }

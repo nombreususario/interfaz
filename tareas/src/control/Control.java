@@ -1,26 +1,38 @@
 package control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.accessibility.AccessibleIcon;
+
 import percistence.BinaryText;
 import percistence.FilePlane;
 import percistence.IFilesManager;
+import view.DatafillChoser;
+import view.MainFrame;
 
-public class Control {
+public class Control implements ActionListener {
+	private DatafillChoser data;
 	public Control() {
-		this.changeType(".txt");
+		MainFrame main=new MainFrame(this);
 	}
-	public void changeType(String type) {
-		switch (type) {
-		case ".bin":
-			IFilesManager bin=new BinaryText();
-			bin.readFile();
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) {
+		switch (Comands.valueOf(actionEvent.getActionCommand())){
+		case C_IMPORT:
+			System.out.println("en proseso");
 			break;
-		case ".txt":
-			IFilesManager file=new FilePlane();
-			file.readFile();
+		case C_EXPORT:
+			dataTrue();
 			break;
 
 		default:
 			break;
 		}
+		
+	}
+	public void dataTrue() {
+		data=new DatafillChoser();
+		data.getName();
 	}
 }

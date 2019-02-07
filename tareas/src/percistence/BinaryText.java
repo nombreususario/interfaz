@@ -24,7 +24,7 @@ public class BinaryText extends IFilesManager {
 			String a=ut.encripted(data.readUTF());
 			int b=data.readInt();
 			boolean c=data.readBoolean();
-			read=a+b+c;
+			read=a+"  "+b+"  "+c;
 			System.out.println(read);
 			file.close();
 			data.close();
@@ -40,15 +40,14 @@ public class BinaryText extends IFilesManager {
 		return read;
 	}
 	@Override
-	public void writeFile() {
+	public void writeFile(String text,int number) {
 		FileOutputStream fileOutputStream=null;
 		DataOutputStream dataOutputStrem=null;
 		try {
 			fileOutputStream=new FileOutputStream("files/Demo2",true);
 			dataOutputStrem=new DataOutputStream(fileOutputStream);
-				dataOutputStrem.writeUTF("la clave es laclave1");
-				dataOutputStrem.writeInt(2);
-				dataOutputStrem.writeBoolean(true);
+				dataOutputStrem.writeUTF(text);
+				dataOutputStrem.writeInt(number);
 			dataOutputStrem.close();
 			fileOutputStream.close();
 		} catch (FileNotFoundException e) {
@@ -57,6 +56,5 @@ public class BinaryText extends IFilesManager {
 		 catch (IOException e) {
 				System.out.println(e.getMessage());
 			}
-		
 	}
 }
