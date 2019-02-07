@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.accessibility.AccessibleIcon;
 
+import model.dao.file;
 import percistence.BinaryText;
+import percistence.FIleManager;
 import percistence.FilePlane;
 import percistence.IFilesManager;
 import view.DatafillChoser;
@@ -13,8 +15,10 @@ import view.MainFrame;
 
 public class Control implements ActionListener {
 	private DatafillChoser data;
+	private file fi;
 	public Control() {
 		MainFrame main=new MainFrame(this);
+		 fi=new file();
 	}
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
@@ -34,5 +38,19 @@ public class Control implements ActionListener {
 	public void dataTrue() {
 		data=new DatafillChoser();
 		data.getName();
+	}
+	public void filesWrite(String text,int number,String type,String path) {
+		FIleManager file=new FIleManager();
+		IFilesManager iFile=file.selctType(type);
+		iFile.writeFile(text, number);
+	}
+	public void generatefile() {
+		fi.setText("texto a escribir");
+		fi.setText("23");
+	}
+	public void export() {
+		String path="";//generar path de el datafilchoser
+		String type="";//generar type de el data
+		filesWrite(fi.getText(), fi.getNumber(), type, path);
 	}
 }
