@@ -19,12 +19,13 @@ public class BinaryText extends IFilesManager {
 		FileInputStream file=null;
 		DataInputStream data=null;
 		try {
-			file=new FileInputStream("files/Demo");
+			file=new FileInputStream("files/Demo2");
 			data=new DataInputStream(file);
 			String a=ut.encripted(data.readUTF());
 			int b=data.readInt();
 			boolean c=data.readBoolean();
 			read=a+b+c;
+			System.out.println(read);
 			file.close();
 			data.close();
 		} catch (FileNotFoundException e){
@@ -43,9 +44,9 @@ public class BinaryText extends IFilesManager {
 		FileOutputStream fileOutputStream=null;
 		DataOutputStream dataOutputStrem=null;
 		try {
-			fileOutputStream=new FileOutputStream("files/Demo",true);
+			fileOutputStream=new FileOutputStream("files/Demo2",true);
 			dataOutputStrem=new DataOutputStream(fileOutputStream);
-				dataOutputStrem.writeUTF("hola");
+				dataOutputStrem.writeUTF("la clave es laclave1");
 				dataOutputStrem.writeInt(2);
 				dataOutputStrem.writeBoolean(true);
 			dataOutputStrem.close();

@@ -12,7 +12,7 @@ public class FilePlane extends IFilesManager{
 		String read="";
 		try {
 			List<String> listLines;
-			listLines=Files.readAllLines(Paths.get("files/DemoPlaib"));
+			listLines=Files.readAllLines(Paths.get("files/DemoPlain"));
 			 read=listLines.toString();
 			return read;
 		} catch (IOException e) {
