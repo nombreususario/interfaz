@@ -2,6 +2,7 @@ package control;
 
 import percistence.BinaryText;
 import percistence.FilePlane;
+import percistence.IFilesManager;
 
 public class Control {
 	public Control() {
@@ -10,11 +11,11 @@ public class Control {
 	public void changeType(String type) {
 		switch (type) {
 		case ".bin":
-			BinaryText bin=new BinaryText();
+			IFilesManager bin=new BinaryText();
 			bin.readFile();
 			break;
 		case ".txt":
-			FilePlane file=new FilePlane();
+			IFilesManager file=new FilePlane();
 			file.readFile();
 			break;
 
