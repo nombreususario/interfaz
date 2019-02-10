@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.accessibility.AccessibleIcon;
 
-import model.dao.file;
+import model.entity.File;
 import percistence.BinaryText;
 import percistence.FIleManager;
 import percistence.FilePlane;
@@ -15,10 +15,10 @@ import view.MainFrame;
 
 public class Control implements ActionListener {
 	private DatafillChoser data;
-	private file fi;
+	private File fi;
 	public Control() {
 		MainFrame main=new MainFrame(this);
-		 fi=new file();
+		 fi=new File();
 	}
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {

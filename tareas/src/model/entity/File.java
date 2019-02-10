@@ -1,7 +1,14 @@
-package model.dao;
+package model.entity;
 
-public class file {
+public class File {
 	private String text;
+	private int number;
+	public File() {
+		
+	}
+	public File(String text) {
+		this.text=text;
+	}
 	public String getText() {
 		return text;
 	}
@@ -14,5 +21,9 @@ public class file {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	private int number;
+	public Object[] fileToObject() {
+		Object[] obj=new Object[1];
+		obj[0]=text;
+		return obj;
+	}
 }
