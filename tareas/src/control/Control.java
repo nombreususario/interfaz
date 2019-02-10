@@ -2,9 +2,11 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.accessibility.AccessibleIcon;
 
+import model.dao.ListFiles;
 import model.entity.File;
 import percistence.BinaryText;
 import percistence.FIleManager;
@@ -12,13 +14,15 @@ import percistence.FilePlane;
 import percistence.IFilesManager;
 import view.DatafillChoser;
 import view.MainFrame;
+import view.NewFIle;
 
 public class Control implements ActionListener {
 	private DatafillChoser data;
-	private File fi;
+	private NewFIle newf;
+	private ListFiles fi;
 	public Control() {
 		MainFrame main=new MainFrame(this);
-		 fi=new File();
+		 fi=new ListFiles();
 	}
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
@@ -29,6 +33,11 @@ public class Control implements ActionListener {
 		case C_EXPORT:
 			dataTrue();
 			break;
+		case C_NEW_FILE:
+			newf=new NewFIle(this);
+			break;
+		case C_NEW_FILE_ACEPT:
+			this.addList();
 		default:
 			break;
 		}
@@ -38,22 +47,25 @@ public class Control implements ActionListener {
 		data=new DatafillChoser();
 		data.getName();
 	}
-	public void filesWrite(String text,int number,String type,String path) {
+	public void filesWrite(ArrayList<String> text,String type,String path) {
 		FIleManager file=new FIleManager();
 		IFilesManager iFile=file.selctType(type);
-		iFile.writeFile(text, number);
-	}
-	public void generatefile() {
-		fi.setText("texto a escribir");
-		fi.setText("23");
+		iFile.writeFile(text,path);
 	}
 	public String path() {
 		data=new DatafillChoser();
 		return data.getPath();
 	}
+	public String type() {
+		data=new DatafillChoser();
+		return data.getTypeFile();
+	}
 	public void export() {
-		String path="";//generar path de el datafilchoser
-		String type="";//generar type de el data
-		filesWrite(fi.getText(), fi.getNumber(), type, path);
+		filesWrite(fi.listToString(), this.type(), this.path());
+	}
+	public void addList() {
+		File file=new File(newf.getText());
+		fi.addLst(file);
+		newf.setVisible(false);
 	}
 }

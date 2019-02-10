@@ -6,6 +6,8 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import control.Control;
+
 public class DatafillChoser extends JDialog{
 	
 	private static final long serialVersionUID = 1L;
@@ -25,8 +27,8 @@ public class DatafillChoser extends JDialog{
 		   int seleccion = fileChooser.showSaveDialog(fileChooser);
 		   if (seleccion == JFileChooser.APPROVE_OPTION)
 		   {
-		      File fichero = fileChooser.getSelectedFile();
-		    
+		    Control control=new Control();
+		    control.export();
 		   }else {
 			   this.inItComponents();
 		   }

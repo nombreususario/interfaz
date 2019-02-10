@@ -3,6 +3,7 @@ package percistence;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilePlane extends IFilesManager{
@@ -21,7 +22,7 @@ public class FilePlane extends IFilesManager{
 		
 	}
 	@Override
-	public void writeFile(String text,int number) {
+	public void writeFile(ArrayList<String> text,String path) {
 		
 		System.out.println("poner algo");
 	}	

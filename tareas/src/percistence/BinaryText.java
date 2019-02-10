@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class BinaryText extends IFilesManager { 
 	private utilites ut;
@@ -40,14 +41,15 @@ public class BinaryText extends IFilesManager {
 		return read;
 	}
 	@Override
-	public void writeFile(String text,int number) {
+	public void writeFile(ArrayList<String> text,String path) {
 		FileOutputStream fileOutputStream=null;
 		DataOutputStream dataOutputStrem=null;
 		try {
-			fileOutputStream=new FileOutputStream("files/Demo2",true);
+			fileOutputStream=new FileOutputStream(path,true);
 			dataOutputStrem=new DataOutputStream(fileOutputStream);
-				dataOutputStrem.writeUTF(text);
-				dataOutputStrem.writeInt(number);
+			for (int i = 0; i < text.size(); i++) {
+				dataOutputStrem.writeUTF(text.get(i));
+			}
 			dataOutputStrem.close();
 			fileOutputStream.close();
 		} catch (FileNotFoundException e) {

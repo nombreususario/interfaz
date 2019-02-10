@@ -10,10 +10,18 @@ import control.Control;
 public class JMenuToolBar extends JMenuBar{
 	public DatafillChoser data;
 	private static final long serialVersionUID = 1L;
-	private JMenu menu;
-	private JMenuItem export,imports;
+	private JMenu menu,files;
+	private JMenuItem export,imports,newFile;
 	public JMenuToolBar(Control control) {
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		
+		files=new JMenu("archivo");		
+		newFile=new JMenuItem("nuevo");
+		newFile.addActionListener(control);
+		newFile.setActionCommand(Comands.C_NEW_FILE.name());
+		files.add(newFile);
+		this.add(files);
+		
 		menu=new JMenu("exportar&importr");
 		export=new JMenuItem("Export");
 		export.addActionListener(control);
