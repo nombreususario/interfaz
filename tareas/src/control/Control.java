@@ -29,7 +29,6 @@ public class Control implements ActionListener {
 		case C_EXPORT:
 			dataTrue();
 			break;
-
 		default:
 			break;
 		}
@@ -47,6 +46,10 @@ public class Control implements ActionListener {
 	public void generatefile() {
 		fi.setText("texto a escribir");
 		fi.setText("23");
+	}
+	public String path() {
+		data=new DatafillChoser();
+		return data.getPath();
 	}
 	public void export() {
 		String path="";//generar path de el datafilchoser
